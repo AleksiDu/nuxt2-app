@@ -20,9 +20,11 @@ export default {
       axios
         .post(
           "https://nuxt2-app-default-rtdb.firebaseio.com/posts.json",
-          postData
+          {...postData, updatedDate: new Date}
         )
-        .then(result => consol.log(result))
+        .then(result => {
+          this.$router.push('/admin');
+        })
         .catch(e => console.log(e));
     },
   },
