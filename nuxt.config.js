@@ -22,7 +22,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#3B8070', height:'4px', duration: 5000 },
 
   /*
   ** Global CSS
@@ -49,8 +49,11 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    transpile: [
+      '@sindresorhus/slugify',
+      '@sindresorhus/transliterate',
+      'hast-util-select',
+    ],
 
-    }
   }
 }
