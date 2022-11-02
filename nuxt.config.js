@@ -55,5 +55,8 @@ module.exports = {
       'hast-util-select',
     ],
 
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://nuxt2-app-default-rtdb.firebaseio.com'
   }
 }
