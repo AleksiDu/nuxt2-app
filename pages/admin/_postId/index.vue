@@ -1,46 +1,46 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost" @submit="onSubmitted"/>
+      <AdminPostForm :post="loadedPost" @submit="onSubmitted" />
     </section>
   </div>
 </template>
 
 <script>
-import AdminPostForm from '@/components/Admin/AdminPostForm'
-import axios from 'axios'
+import AdminPostForm from "@/components/Admin/AdminPostForm";
+import axios from "axios";
 
 export default {
-  layout: 'admin',
+  layout: "admin",
   components: {
-    AdminPostForm
+    AdminPostForm,
   },
-    asyncData(context) {
-    return axios
-      .get(
-        "https://nuxt2-app-default-rtdb.firebaseio.com/posts/" +
-          context.params.id +
-          ".json"
-      )
-      .then((res) => {
+  asyncData(context) {
+    return context.app.$axios
+      .$get(process.env.baseUrl + "/posts/" + context.params.postId + ".json")
+      .then((data) => {
         return {
-          loadedPost: { ...res.data, id: context.params.postId },
+          loadedPost: { ...data, id: context.params.postId },
         };
       })
       .catch((e) => context.error());
   },
   methods: {
-    onSubmitted(editedPost){
-      axios.put("https://nuxt2-app-default-rtdb.firebaseio.com/posts/" +
-        this.$router.params.id +
-        ".json", editedPost)
-        .then(res => {
-          this.$router.push('/admin')
-          })
-        .catch(e => console.log(e))
-    }
-  }
-}
+    onSubmitted(editedPost) {
+      axios
+        .put(
+          "https://nuxt2-app-default-rtdb.firebaseio.com/posts/" +
+            this.$router.params.id +
+            ".json",
+          editedPost
+        )
+        .then((res) => {
+          this.$router.push("/admin");
+        })
+        .catch((e) => console.log(e));
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -18,14 +18,14 @@ export default {
   methods: {
     onSubmitted(postData) {
       axios
-        .post(
-          "https://nuxt2-app-default-rtdb.firebaseio.com/posts.json",
-          {...postData, updatedDate: new Date}
-        )
-        .then(result => {
-          this.$router.push('/admin');
+        .post("https://nuxt2-app-default-rtdb.firebaseio.com/posts.json", {
+          ...postData,
+          updatedDate: new Date(),
         })
-        .catch(e => console.log(e));
+        .then((result) => {
+          this.$router.push("/admin");
+        })
+        .catch((e) => console.log(e));
     },
   },
 };
@@ -43,4 +43,3 @@ export default {
   }
 }
 </style>
-
