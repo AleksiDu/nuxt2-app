@@ -8,13 +8,13 @@
 
 <script>
 import AdminPostForm from "@/components/Admin/AdminPostForm";
-import axios from "axios";
 
 export default {
   layout: "admin",
   components: {
     AdminPostForm,
   },
+  middleware: ["auth"],
   asyncData(context) {
     return context.app.$axios
       .$get(process.env.baseUrl + "/posts/" + context.params.postId + ".json")
@@ -27,17 +27,9 @@ export default {
   },
   methods: {
     onSubmitted(editedPost) {
-      axios
-        .put(
-          "https://nuxt2-app-default-rtdb.firebaseio.com/posts/" +
-            this.$router.params.id +
-            ".json",
-          editedPost
-        )
-        .then((res) => {
-          this.$router.push("/admin");
-        })
-        .catch((e) => console.log(e));
+      this.$store.dispatch("editPost", editedPost).then(() => {
+        this.$router.push("/admin");
+      });
     },
   },
 };
