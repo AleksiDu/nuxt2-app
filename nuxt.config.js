@@ -44,7 +44,7 @@ module.exports = {
 
   axios: {
     baseURL:
-      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com",
+      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com/",
   },
 
   /*
@@ -54,22 +54,15 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    transpile: [
-      "@sindresorhus/slugify",
-      "@sindresorhus/transliterate",
-      "hast-util-select",
-    ],
+    extend(config, ctx) {},
   },
   env: {
     baseUrl:
-      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com",
+      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com/",
     fbAPIkey: "AIzaSyCfYW86nCHMowJU_sc--ZswbaRiNb28XZM",
   },
   transition: {
     name: "fade",
     mode: "out-in",
-  },
-  router: {
-    middleware: "log",
   },
 };
