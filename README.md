@@ -1,6 +1,6 @@
-# nuxt-course
+# nuxt2 static app
 
-> Nuxt.js course for Udemy
+> [nux2-static-app](https://aleksidu.github.io/nuxt2-static-app/)
 
 ## Build Setup
 
