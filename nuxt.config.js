@@ -44,7 +44,7 @@ module.exports = {
 
   axios: {
     baseURL:
-      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com/",
+      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com",
   },
 
   /*
@@ -58,8 +58,8 @@ module.exports = {
   },
   env: {
     baseUrl:
-      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com/",
-    fbAPIkey: "AIzaSyCfYW86nCHMowJU_sc--ZswbaRiNb28XZM",
+      process.env.BASE_URL || "https://nuxt2-app-default-rtdb.firebaseio.com",
+    fbAPIKey: "AIzaSyCfYW86nCHMowJU_sc--ZswbaRiNb28XZM",
   },
   transition: {
     name: "fade",
